@@ -2,15 +2,61 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="description" content="Sevi — инновационный веб-мессенджер: чаты, голосовые комнаты, видеозвонки, стрики с питомцами и совместное прослушивание музыки." />
+  <meta name="theme-color" content="#07060d" />
   <title>Sevi — мессенджер нового поколения</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- =========================================================
+       SVG-СПРАЙТ ИКОНОК (Feather-style, stroke=currentColor)
+  ========================================================== -->
+  <svg width="0" height="0" class="svg-sprite" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+      <symbol id="i-edit" viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></symbol>
+      <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+      <symbol id="i-video" viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></symbol>
+      <symbol id="i-sidebar" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="15" y1="3" x2="15" y2="21"/></symbol>
+      <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+      <symbol id="i-mic-off" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/><path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+      <symbol id="i-camera" viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></symbol>
+      <symbol id="i-camera-off" viewBox="0 0 24 24"><line x1="1" y1="1" x2="23" y2="23"/><path d="M21 21H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3m4-3h6l2 3h4a2 2 0 0 1 2 2v9.34m-7.72-2.06a4 4 0 1 1-5.56-5.56"/></symbol>
+      <symbol id="i-maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></symbol>
+      <symbol id="i-power" viewBox="0 0 24 24"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"/><line x1="12" y1="2" x2="12" y2="12"/></symbol>
+      <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+      <symbol id="i-music" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+      <symbol id="i-send" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></symbol>
+      <symbol id="i-plus" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+      <symbol id="i-paperclip" viewBox="0 0 24 24"><path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48"/></symbol>
+      <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></symbol>
+      <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+      <symbol id="i-user" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+      <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+      <symbol id="i-play" viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></symbol>
+      <symbol id="i-pause" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></symbol>
+      <symbol id="i-next" viewBox="0 0 24 24"><polygon points="5 4 15 12 5 20 5 4"/><line x1="19" y1="5" x2="19" y2="19"/></symbol>
+      <symbol id="i-prev" viewBox="0 0 24 24"><polygon points="19 20 9 12 19 4 19 20"/><line x1="5" y1="19" x2="5" y2="5"/></symbol>
+      <symbol id="i-shuffle" viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></symbol>
+      <symbol id="i-repeat" viewBox="0 0 24 24"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></symbol>
+      <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+      <symbol id="i-minus" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+      <symbol id="i-back" viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></symbol>
+      <symbol id="i-flame" viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></symbol>
+      <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></symbol>
+      <symbol id="i-upload" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+      <symbol id="i-bell" viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+      <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+      <symbol id="i-trash" viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+      <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    </defs>
+  </svg>
+
   <!-- Декоративные градиентные пятна фона -->
   <div class="bg-orbs" aria-hidden="true">
     <span class="orb orb--violet"></span>
@@ -20,68 +66,24 @@
 
   <div class="app" id="app">
     <!-- =========================================================
-         1. КРАЙНЯЯ ЛЕВАЯ ПАНЕЛЬ (рейл серверов / папок)
+         ПАНЕЛЬ ЧАТОВ (папки, поиск, список, профиль/настройки)
     ========================================================== -->
-    <nav class="rail glass" aria-label="Серверы и папки">
-      <div class="rail__logo" title="Sevi">
-        <span class="rail__logo-mark">S</span>
-      </div>
-
-      <div class="rail__divider"></div>
-
-      <ul class="rail__list" id="serverList">
-        <li>
-          <button class="rail__item rail__item--active" data-server="sevenis" title="Sevenis" aria-label="Сервер Sevenis">
-            <span class="rail__avatar">SV</span>
-            <span class="rail__pill"></span>
-          </button>
-        </li>
-        <li>
-          <button class="rail__item" data-server="design" title="Design Lab" aria-label="Сервер Design Lab">
-            <span class="rail__avatar rail__avatar--green">DL</span>
-            <span class="rail__pill"></span>
-          </button>
-        </li>
-        <li>
-          <button class="rail__item" data-server="music" title="Lo-Fi Lounge" aria-label="Сервер Lo-Fi Lounge">
-            <span class="rail__avatar">🎧</span>
-            <span class="rail__pill"></span>
-          </button>
-        </li>
-        <li>
-          <button class="rail__item" data-server="gaming" title="GameZone" aria-label="Сервер GameZone">
-            <span class="rail__avatar rail__avatar--green">🎮</span>
-            <span class="rail__pill"></span>
-          </button>
-        </li>
-      </ul>
-
-      <button class="rail__add" title="Добавить сервер" aria-label="Добавить сервер">+</button>
-
-      <div class="rail__spacer"></div>
-
-      <button class="rail__item rail__item--utility" title="Настройки" aria-label="Настройки">⚙️</button>
-      <button class="rail__avatar rail__me" title="Профиль Mark" aria-label="Профиль">
-        MK
-        <span class="status-dot status-dot--online" aria-label="В сети"></span>
-      </button>
-    </nav>
-
-    <!-- =========================================================
-         2. ПАНЕЛЬ ЧАТОВ (папки, поиск, список чатов)
-    ========================================================== -->
-    <aside class="sidebar glass" aria-label="Список чатов">
-      <header class="sidebar__header">
-        <h1 class="sidebar__title">Sevenis</h1>
-        <button class="icon-btn" title="Новый чат" aria-label="Новый чат">✎</button>
+    <aside class="sidebar glass" id="sidebar" aria-label="Список чатов">
+      <header class="sidebar__brand">
+        <span class="brand">
+          <span class="brand__mark">S</span>
+          <span class="brand__name">Sevi</span>
+        </span>
+        <button class="icon-btn" id="newChatBtn" title="Новый чат" aria-label="Новый чат">
+          <svg class="ic"><use href="#i-edit"></use></svg>
+        </button>
       </header>
 
       <div class="search">
-        <span class="search__icon" aria-hidden="true">🔍</span>
+        <svg class="ic search__icon"><use href="#i-search"></use></svg>
         <input type="search" class="search__input" id="searchInput" placeholder="Поиск чатов и людей…" aria-label="Поиск" />
       </div>
 
-      <!-- Папки чатов -->
       <div class="folders" role="tablist" aria-label="Папки чатов">
         <button class="folder folder--active" data-folder="all" role="tab" aria-selected="true">Все</button>
         <button class="folder" data-folder="dm" role="tab" aria-selected="false">Личные</button>
@@ -89,168 +91,59 @@
         <button class="folder" data-folder="channels" role="tab" aria-selected="false">Каналы</button>
       </div>
 
-      <div class="chat-list" id="chatList">
-        <!-- Личные сообщения -->
-        <p class="chat-list__label" data-section="dm">Личные сообщения</p>
-
-        <button class="chat-item chat-item--active" data-chat="bulat" data-folder="dm" data-pet="dog" data-streak="14">
-          <span class="chat-item__avatar">
-            BL
-            <span class="status-dot status-dot--online"></span>
-          </span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Bulat</span>
-              <span class="chat-item__time">16:48</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview">Скинул трек, врубай в голосовой 🎶</span>
-              <span class="chat-item__badge">2</span>
-            </span>
-          </span>
-          <span class="streak-chip" title="Стрик 14 дней">
-            <span class="streak-chip__pet">🐶</span>
-            <span class="streak-chip__count">14</span>
-          </span>
-        </button>
-
-        <button class="chat-item" data-chat="alina" data-folder="dm" data-pet="cat" data-streak="6">
-          <span class="chat-item__avatar chat-item__avatar--green">
-            AL
-            <span class="status-dot status-dot--idle"></span>
-          </span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Alina</span>
-              <span class="chat-item__time">15:20</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview">Договорились на завтра ✨</span>
-            </span>
-          </span>
-          <span class="streak-chip" title="Стрик 6 дней">
-            <span class="streak-chip__pet">🐱</span>
-            <span class="streak-chip__count">6</span>
-          </span>
-        </button>
-
-        <button class="chat-item" data-chat="timur" data-folder="dm" data-pet="duck" data-streak="1">
-          <span class="chat-item__avatar">
-            TM
-            <span class="status-dot status-dot--offline"></span>
-          </span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Timur</span>
-              <span class="chat-item__time">Вчера</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview">Стрик под угрозой, напиши 👀</span>
-            </span>
-          </span>
-          <span class="streak-chip streak-chip--danger" title="Стрик скоро сгорит!">
-            <span class="streak-chip__pet">🦆</span>
-            <span class="streak-chip__count">1</span>
-          </span>
-        </button>
-
-        <!-- Группы -->
-        <p class="chat-list__label" data-section="groups">Группы</p>
-
-        <button class="chat-item" data-chat="sevenis" data-folder="groups" data-pet="dog" data-streak="30">
-          <span class="chat-item__avatar chat-item__avatar--group">SV</span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Sevenis · 248</span>
-              <span class="chat-item__time">16:50</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview"><b>Kirill:</b> релиз сегодня 🚀</span>
-              <span class="chat-item__badge">12</span>
-            </span>
-          </span>
-          <span class="streak-chip" title="Стрик 30 дней">
-            <span class="streak-chip__pet">🐶</span>
-            <span class="streak-chip__count">30</span>
-          </span>
-        </button>
-
-        <button class="chat-item" data-chat="design" data-folder="groups" data-pet="cat" data-streak="9">
-          <span class="chat-item__avatar chat-item__avatar--group chat-item__avatar--green">DL</span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Design Lab · 56</span>
-              <span class="chat-item__time">14:02</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview"><b>Nastya:</b> накинула макеты в Figma</span>
-            </span>
-          </span>
-          <span class="streak-chip" title="Стрик 9 дней">
-            <span class="streak-chip__pet">🐱</span>
-            <span class="streak-chip__count">9</span>
-          </span>
-        </button>
-
-        <!-- Каналы -->
-        <p class="chat-list__label" data-section="channels">Каналы</p>
-
-        <button class="chat-item" data-chat="news" data-folder="channels" data-pet="duck" data-streak="0">
-          <span class="chat-item__avatar chat-item__avatar--channel">#</span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Sevi News</span>
-              <span class="chat-item__time">12:30</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview">📢 Обновление 2.4: питомцы и плеер</span>
-            </span>
-          </span>
-        </button>
-
-        <button class="chat-item" data-chat="lofi" data-folder="channels" data-pet="dog" data-streak="0">
-          <span class="chat-item__avatar chat-item__avatar--channel chat-item__avatar--green">🎵</span>
-          <span class="chat-item__body">
-            <span class="chat-item__top">
-              <span class="chat-item__name">Lo-Fi Radio</span>
-              <span class="chat-item__time">сейчас</span>
-            </span>
-            <span class="chat-item__bottom">
-              <span class="chat-item__preview">🔴 В эфире · 1.2k слушают</span>
-            </span>
-          </span>
-        </button>
+      <div class="chat-list" id="chatList" aria-label="Чаты">
+        <!-- Заполняется из js/chat.js -->
       </div>
+
+      <!-- Профиль и настройки перенесены сюда -->
+      <footer class="sidebar__footer">
+        <button class="me" id="openProfileBtn" title="Мой профиль" aria-label="Мой профиль">
+          <span class="me__avatar">MK<span class="status-dot status-dot--online"></span></span>
+          <span class="me__meta">
+            <span class="me__name">Mark</span>
+            <span class="me__status">в сети</span>
+          </span>
+        </button>
+        <button class="icon-btn" id="openSettingsBtn" title="Настройки" aria-label="Настройки">
+          <svg class="ic"><use href="#i-settings"></use></svg>
+        </button>
+      </footer>
     </aside>
 
     <!-- =========================================================
-         3. ЦЕНТРАЛЬНАЯ ЗОНА ЧАТА
+         ЦЕНТРАЛЬНАЯ ЗОНА ЧАТА
     ========================================================== -->
-    <main class="chat glass" aria-label="Окно чата">
+    <main class="chat glass" id="chat" aria-label="Окно чата">
       <header class="chat__header">
-        <div class="chat__peer">
-          <span class="chat__peer-avatar" id="peerAvatar">BL
-            <span class="status-dot status-dot--online"></span>
-          </span>
-          <div class="chat__peer-meta">
+        <button class="icon-btn chat__back" id="chatBackBtn" title="Назад" aria-label="Назад к чатам">
+          <svg class="ic"><use href="#i-back"></use></svg>
+        </button>
+
+        <button class="chat__peer" id="peerBtn" title="Открыть профиль">
+          <span class="chat__peer-avatar" id="peerAvatar">BL<span class="status-dot status-dot--online"></span></span>
+          <span class="chat__peer-meta">
             <span class="chat__peer-name" id="peerName">Bulat</span>
-            <span class="chat__peer-status" id="peerStatus">в сети · печатает…</span>
-          </div>
-        </div>
+            <span class="chat__peer-status" id="peerStatus">в сети</span>
+          </span>
+        </button>
 
         <div class="chat__actions">
-          <!-- Виджет стрика с питомцем -->
-          <button class="streak-widget" id="streakWidget" title="Ваш стрик общения">
-            <span class="streak-widget__pet" id="streakPet">🐶</span>
-            <span class="streak-widget__meta">
-              <span class="streak-widget__count"><span id="streakCount">14</span> дней</span>
-              <span class="streak-widget__mood" id="streakMood">Питомец счастлив!</span>
-            </span>
+          <!-- Компактный стрик-бейдж: клик → подробное окно -->
+          <button class="streak-badge" id="streakBadge" title="Подробнее о стрике" aria-haspopup="dialog">
+            <span class="streak-badge__pet" id="streakPet">🐶</span>
+            <span class="streak-badge__count" id="streakCount">14</span>
+            <svg class="ic streak-badge__flame"><use href="#i-flame"></use></svg>
           </button>
 
-          <button class="icon-btn" id="voiceBtn" title="Голосовой звонок" aria-label="Голосовой звонок">📞</button>
-          <button class="icon-btn icon-btn--accent" id="videoCallBtn" title="Видеозвонок" aria-label="Видеозвонок">🎥</button>
-          <button class="icon-btn" id="toggleRightBtn" title="Боковая панель" aria-label="Переключить панель">▦</button>
+          <button class="icon-btn" id="voiceBtn" title="Голосовой звонок" aria-label="Голосовой звонок">
+            <svg class="ic"><use href="#i-phone"></use></svg>
+          </button>
+          <button class="icon-btn icon-btn--accent" id="videoCallBtn" title="Видеозвонок" aria-label="Видеозвонок">
+            <svg class="ic"><use href="#i-video"></use></svg>
+          </button>
+          <button class="icon-btn" id="toggleRightBtn" title="Боковая панель" aria-label="Переключить панель">
+            <svg class="ic"><use href="#i-sidebar"></use></svg>
+          </button>
         </div>
       </header>
 
@@ -258,45 +151,44 @@
       <div class="voice-room" id="voiceRoom" hidden>
         <div class="voice-room__info">
           <span class="voice-room__pulse"></span>
-          <span class="voice-room__title">Голосовая комната · Sevenis</span>
-          <span class="voice-room__members">
-            <span class="voice-room__avatar">BL</span>
-            <span class="voice-room__avatar voice-room__avatar--green">AL</span>
-            <span class="voice-room__avatar">MK</span>
-            <span class="voice-room__more">+2</span>
+          <span class="voice-room__title">Голосовая комната</span>
+          <span class="voice-room__members" id="voiceMembers">
+            <span class="mini-ava">BL</span>
+            <span class="mini-ava mini-ava--green">AL</span>
+            <span class="mini-ava">MK</span>
           </span>
-          <span class="voice-room__sync" title="Совместное прослушивание">🎵 слушаете вместе</span>
+          <span class="voice-room__sync">
+            <svg class="ic"><use href="#i-music"></use></svg> слушаете вместе
+          </span>
         </div>
         <div class="voice-room__controls">
-          <button class="round-btn" id="vrMicBtn" title="Микрофон" aria-pressed="true">🎙️</button>
-          <button class="round-btn" id="vrCamBtn" title="Камера" aria-pressed="false">📷</button>
-          <button class="round-btn" id="vrExpandBtn" title="Развернуть видео">⛶</button>
-          <button class="round-btn round-btn--danger" id="vrLeaveBtn" title="Выйти">⏻</button>
+          <button class="round-btn" id="vrMicBtn" title="Микрофон" aria-pressed="true"><svg class="ic"><use href="#i-mic"></use></svg></button>
+          <button class="round-btn" id="vrCamBtn" title="Камера" aria-pressed="false"><svg class="ic"><use href="#i-camera-off"></use></svg></button>
+          <button class="round-btn" id="vrExpandBtn" title="Развернуть видео"><svg class="ic"><use href="#i-maximize"></use></svg></button>
+          <button class="round-btn round-btn--danger" id="vrLeaveBtn" title="Выйти"><svg class="ic"><use href="#i-power"></use></svg></button>
         </div>
       </div>
 
-      <div class="messages" id="messages" aria-live="polite">
-        <!-- Сообщения подставляются из script.js -->
-      </div>
+      <div class="messages" id="messages" aria-live="polite"></div>
 
       <footer class="composer">
-        <button class="icon-btn" title="Прикрепить файл" aria-label="Прикрепить">＋</button>
-        <button class="icon-btn" title="Эмодзи" aria-label="Эмодзи">😊</button>
-        <input type="text" class="composer__input" id="composerInput" placeholder="Сообщение для Bulat…" aria-label="Введите сообщение" />
-        <button class="icon-btn" title="Голосовое сообщение" aria-label="Голосовое">🎤</button>
-        <button class="send-btn" id="sendBtn" title="Отправить" aria-label="Отправить">➤</button>
+        <button class="icon-btn" title="Прикрепить файл" aria-label="Прикрепить"><svg class="ic"><use href="#i-paperclip"></use></svg></button>
+        <button class="icon-btn" title="Эмодзи" aria-label="Эмодзи"><svg class="ic"><use href="#i-smile"></use></svg></button>
+        <input type="text" class="composer__input" id="composerInput" placeholder="Сообщение…" aria-label="Введите сообщение" />
+        <button class="icon-btn" title="Голосовое сообщение" aria-label="Голосовое"><svg class="ic"><use href="#i-mic"></use></svg></button>
+        <button class="send-btn" id="sendBtn" title="Отправить" aria-label="Отправить"><svg class="ic"><use href="#i-send"></use></svg></button>
       </footer>
     </main>
 
     <!-- =========================================================
-         4. ПРАВЫЙ САЙДБАР: ПИТОМЕЦ + ПЛЕЕР
+         ПРАВЫЙ САЙДБАР: ПИТОМЕЦ + ПЛЕЕР
     ========================================================== -->
     <aside class="rightbar glass" id="rightbar" aria-label="Питомец и музыка">
       <!-- Карточка питомца -->
       <section class="pet-card">
         <header class="pet-card__head">
           <h2 class="rightbar__title">Стрик-питомец</h2>
-          <span class="pet-card__streak"><span id="petStreakDays">14</span> 🔥</span>
+          <span class="pet-card__streak"><span id="petStreakDays">14</span> <svg class="ic ic--green"><use href="#i-flame"></use></svg></span>
         </header>
 
         <div class="pet-stage" id="petStage">
@@ -304,12 +196,12 @@
           <span class="pet-stage__emoji" id="petEmoji">🐶</span>
         </div>
 
-        <p class="pet-card__mood" id="petMood">Радуется каждому дню вместе с Bulat!</p>
+        <p class="pet-card__mood" id="petMood">Радуется каждому дню вместе!</p>
 
-        <div class="pet-progress">
+        <div class="pet-progress" title="Прогресс до нового уровня">
           <div class="pet-progress__bar" id="petProgressBar" style="width: 70%"></div>
         </div>
-        <p class="pet-card__hint">До нового уровня: <b id="petToNext">3</b> дня общения</p>
+        <p class="pet-card__hint">До нового уровня: <b id="petToNext">3</b> дн.</p>
 
         <div class="pet-picker" role="group" aria-label="Выбор питомца">
           <button class="pet-picker__btn pet-picker__btn--active" data-pet="dog" title="Собачка">🐶</button>
@@ -318,8 +210,8 @@
         </div>
 
         <div class="pet-card__controls">
-          <button class="ghost-btn" id="streakMinus" title="Симуляция: день пропущен">− день</button>
-          <button class="ghost-btn ghost-btn--green" id="streakPlus" title="Симуляция: день общения">+ день</button>
+          <button class="ghost-btn" id="streakMinus" title="Симуляция: день пропущен"><svg class="ic"><use href="#i-minus"></use></svg> день</button>
+          <button class="ghost-btn ghost-btn--green" id="streakPlus" title="Симуляция: день общения"><svg class="ic"><use href="#i-plus"></use></svg> день</button>
         </div>
       </section>
 
@@ -327,9 +219,9 @@
       <section class="player" id="player">
         <header class="player__head">
           <h2 class="rightbar__title">Sevi Music</h2>
-          <span class="player__sync" id="playerSync" title="Синхронно с Bulat">
-            <span class="player__sync-dot"></span> вместе с Bulat
-          </span>
+          <button class="player__sync" id="playerSync" title="Совместное прослушивание">
+            <span class="player__sync-dot"></span> <span id="playerSyncLabel">вместе с Bulat</span>
+          </button>
         </header>
 
         <div class="player__cover" id="playerCover">
@@ -345,62 +237,56 @@
         </div>
 
         <div class="player__timeline">
-          <span class="player__time" id="curTime">1:12</span>
-          <div class="player__progress" id="seek">
-            <div class="player__progress-fill" id="seekFill" style="width: 38%"></div>
-            <div class="player__progress-knob" id="seekKnob" style="left: 38%"></div>
+          <span class="player__time" id="curTime">0:00</span>
+          <div class="player__progress" id="seek" role="slider" aria-label="Перемотка" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div class="player__progress-fill" id="seekFill" style="width: 0%"></div>
+            <div class="player__progress-knob" id="seekKnob" style="left: 0%"></div>
           </div>
           <span class="player__time" id="durTime">3:08</span>
         </div>
 
         <div class="player__controls">
-          <button class="player__btn" id="shuffleBtn" title="Перемешать">🔀</button>
-          <button class="player__btn" id="prevBtn" title="Предыдущий">⏮</button>
-          <button class="player__btn player__btn--play" id="playBtn" title="Играть / Пауза">▶</button>
-          <button class="player__btn" id="nextBtn" title="Следующий">⏭</button>
-          <button class="player__btn" id="repeatBtn" title="Повтор">🔁</button>
+          <button class="player__btn" id="shuffleBtn" title="Перемешать"><svg class="ic"><use href="#i-shuffle"></use></svg></button>
+          <button class="player__btn" id="prevBtn" title="Предыдущий"><svg class="ic"><use href="#i-prev"></use></svg></button>
+          <button class="player__btn player__btn--play" id="playBtn" title="Играть / Пауза"><svg class="ic"><use href="#i-play"></use></svg></button>
+          <button class="player__btn" id="nextBtn" title="Следующий"><svg class="ic"><use href="#i-next"></use></svg></button>
+          <button class="player__btn" id="repeatBtn" title="Повтор"><svg class="ic"><use href="#i-repeat"></use></svg></button>
         </div>
 
         <div class="playlists">
-          <p class="playlists__label">Плейлисты</p>
-          <button class="playlist playlist--active" data-playlist="cafe">
-            <span class="playlist__icon">☕</span>
-            <span class="playlist__name">Cafe</span>
-            <span class="playlist__count">42 трека</span>
-          </button>
-          <button class="playlist" data-playlist="bar">
-            <span class="playlist__icon">🍸</span>
-            <span class="playlist__name">Bar</span>
-            <span class="playlist__count">31 трек</span>
-          </button>
-          <button class="playlist" data-playlist="focus">
-            <span class="playlist__icon">🎧</span>
-            <span class="playlist__name">Focus Flow</span>
-            <span class="playlist__count">68 треков</span>
-          </button>
+          <div class="playlists__head">
+            <p class="playlists__label">Плейлисты</p>
+            <button class="text-btn" id="newPlaylistBtn" title="Создать плейлист"><svg class="ic"><use href="#i-plus"></use></svg> Создать</button>
+          </div>
+          <div id="playlistList"><!-- из js/player.js --></div>
+          <button class="add-song-btn" id="addSongBtn"><svg class="ic"><use href="#i-music"></use></svg> Добавить песню</button>
         </div>
       </section>
     </aside>
   </div>
 
+  <!-- Скрытый аудио-элемент для реального воспроизведения добавленных треков -->
+  <audio id="audio" preload="none"></audio>
+
   <!-- =========================================================
-       5. МОДАЛЬНОЕ ОКНО ВИДЕОЗВОНКА + ДЕМОНСТРАЦИЯ ЭКРАНА
+       МОДАЛКА ВИДЕОЗВОНКА (перетаскиваемая)
   ========================================================== -->
-  <div class="call-overlay" id="callOverlay" hidden>
-    <div class="call glass" role="dialog" aria-modal="true" aria-label="Видеозвонок">
-      <header class="call__header">
-        <div class="call__title">
-          <span class="call__rec"></span>
+  <div class="overlay" id="callOverlay" hidden>
+    <div class="window call" id="callWindow" role="dialog" aria-modal="true" aria-label="Видеозвонок">
+      <header class="window__header" data-drag-handle>
+        <div class="window__title">
+          <span class="rec-dot"></span>
           <span>Видеозвонок · <b id="callPeerName">Bulat</b></span>
-          <span class="call__timer" id="callTimer">00:00</span>
+          <span class="window__timer" id="callTimer">00:00</span>
         </div>
-        <button class="icon-btn" id="callMinimize" title="Свернуть">—</button>
+        <div class="window__head-actions">
+          <button class="icon-btn icon-btn--sm" id="callMinimize" title="Свернуть"><svg class="ic"><use href="#i-minus"></use></svg></button>
+        </div>
       </header>
 
-      <div class="call__stage" id="callStage">
-        <!-- Демонстрация экрана (главный кадр) -->
+      <div class="call__stage">
         <div class="call__screen" id="callScreen">
-          <div class="call__screen-badge">🖥️ Демонстрация экрана · Bulat</div>
+          <div class="call__screen-badge"><svg class="ic"><use href="#i-monitor"></use></svg> Демонстрация экрана · <span id="screenOwner">Bulat</span></div>
           <div class="call__screen-content">
             <div class="call__screen-mock">
               <span class="call__screen-line"></span>
@@ -411,16 +297,15 @@
           </div>
         </div>
 
-        <!-- Плитки участников -->
         <div class="call__tiles">
           <div class="call__tile call__tile--speaking">
-            <span class="call__tile-avatar">BL</span>
-            <span class="call__tile-name">Bulat</span>
+            <span class="call__tile-avatar" id="callPeerAvatar">BL</span>
+            <span class="call__tile-name" id="callPeerTileName">Bulat</span>
           </div>
           <div class="call__tile call__tile--self">
             <span class="call__tile-avatar call__tile-avatar--green">MK</span>
             <span class="call__tile-name">Вы</span>
-            <span class="call__tile-muted" id="selfMutedBadge" hidden>🔇</span>
+            <span class="call__tile-muted" id="selfMutedBadge" hidden><svg class="ic"><use href="#i-mic-off"></use></svg></span>
           </div>
           <div class="call__tile call__tile--off">
             <span class="call__tile-avatar">AL</span>
@@ -430,18 +315,175 @@
       </div>
 
       <div class="call__controls">
-        <button class="round-btn round-btn--lg" id="callMicBtn" title="Микрофон" aria-pressed="true">🎙️</button>
-        <button class="round-btn round-btn--lg" id="callCamBtn" title="Камера" aria-pressed="true">📷</button>
-        <button class="round-btn round-btn--lg" id="callScreenBtn" title="Демонстрация экрана" aria-pressed="true">🖥️</button>
-        <button class="round-btn round-btn--lg" id="callMusicBtn" title="Слушать вместе">🎵</button>
-        <button class="round-btn round-btn--lg round-btn--danger" id="callEndBtn" title="Завершить">⏻</button>
+        <button class="round-btn round-btn--lg" id="callMicBtn" title="Микрофон" aria-pressed="true"><svg class="ic"><use href="#i-mic"></use></svg></button>
+        <button class="round-btn round-btn--lg" id="callCamBtn" title="Камера" aria-pressed="true"><svg class="ic"><use href="#i-camera"></use></svg></button>
+        <button class="round-btn round-btn--lg" id="callScreenBtn" title="Демонстрация экрана" aria-pressed="true"><svg class="ic"><use href="#i-monitor"></use></svg></button>
+        <button class="round-btn round-btn--lg" id="callMusicBtn" title="Слушать вместе"><svg class="ic"><use href="#i-music"></use></svg></button>
+        <button class="round-btn round-btn--lg round-btn--danger" id="callEndBtn" title="Завершить"><svg class="ic"><use href="#i-power"></use></svg></button>
       </div>
     </div>
   </div>
 
-  <!-- Тосты -->
+  <!-- =========================================================
+       МОДАЛКА СТРИКА (подробности)
+  ========================================================== -->
+  <div class="overlay" id="streakOverlay" hidden>
+    <div class="window window--sm" id="streakWindow" role="dialog" aria-modal="true" aria-label="Стрик">
+      <header class="window__header" data-drag-handle>
+        <div class="window__title"><svg class="ic ic--green"><use href="#i-flame"></use></svg> Стрик общения</div>
+        <button class="icon-btn icon-btn--sm" data-close="streakOverlay" title="Закрыть"><svg class="ic"><use href="#i-x"></use></svg></button>
+      </header>
+      <div class="window__body" id="streakBody"><!-- из js/pets.js --></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА НАСТРОЕК
+  ========================================================== -->
+  <div class="overlay" id="settingsOverlay" hidden>
+    <div class="window" id="settingsWindow" role="dialog" aria-modal="true" aria-label="Настройки">
+      <header class="window__header" data-drag-handle>
+        <div class="window__title"><svg class="ic"><use href="#i-settings"></use></svg> Настройки</div>
+        <button class="icon-btn icon-btn--sm" data-close="settingsOverlay" title="Закрыть"><svg class="ic"><use href="#i-x"></use></svg></button>
+      </header>
+      <div class="window__body">
+        <div class="setting-row">
+          <div class="setting-row__text">
+            <span class="setting-row__title">Акцентный цвет</span>
+            <span class="setting-row__desc">Цвет кнопок и активных элементов</span>
+          </div>
+          <div class="accent-picker" id="accentPicker">
+            <button class="accent-dot accent-dot--violet accent-dot--active" data-accent="violet" title="Фиолетовый"></button>
+            <button class="accent-dot accent-dot--green" data-accent="green" title="Зелёный"></button>
+            <button class="accent-dot accent-dot--blue" data-accent="blue" title="Синий"></button>
+            <button class="accent-dot accent-dot--pink" data-accent="pink" title="Розовый"></button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-row__text">
+            <span class="setting-row__title">Режим производительности</span>
+            <span class="setting-row__desc">Отключает размытие (backdrop-filter) для слабых устройств</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="perfToggle" /><span class="switch__track"></span></label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-row__text">
+            <span class="setting-row__title">Уведомления</span>
+            <span class="setting-row__desc">Всплывающие подсказки о событиях</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="notifToggle" checked /><span class="switch__track"></span></label>
+        </div>
+
+        <div class="setting-row">
+          <div class="setting-row__text">
+            <span class="setting-row__title">Звук в сообщениях</span>
+            <span class="setting-row__desc">Автоответы собеседника в демо</span>
+          </div>
+          <label class="switch"><input type="checkbox" id="autoreplyToggle" checked /><span class="switch__track"></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА ПРОФИЛЯ (свой / чужой)
+  ========================================================== -->
+  <div class="overlay" id="profileOverlay" hidden>
+    <div class="window window--sm" id="profileWindow" role="dialog" aria-modal="true" aria-label="Профиль">
+      <header class="window__header" data-drag-handle>
+        <div class="window__title"><svg class="ic"><use href="#i-user"></use></svg> <span id="profileWindowTitle">Профиль</span></div>
+        <button class="icon-btn icon-btn--sm" data-close="profileOverlay" title="Закрыть"><svg class="ic"><use href="#i-x"></use></svg></button>
+      </header>
+      <div class="window__body" id="profileBody"><!-- из js/profile.js --></div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА ДОБАВЛЕНИЯ ПЕСНИ
+  ========================================================== -->
+  <div class="overlay" id="songOverlay" hidden>
+    <div class="window window--sm" id="songWindow" role="dialog" aria-modal="true" aria-label="Добавить песню">
+      <header class="window__header" data-drag-handle>
+        <div class="window__title"><svg class="ic"><use href="#i-music"></use></svg> Добавить песню</div>
+        <button class="icon-btn icon-btn--sm" data-close="songOverlay" title="Закрыть"><svg class="ic"><use href="#i-x"></use></svg></button>
+      </header>
+      <div class="window__body">
+        <label class="field"><span class="field__label">Название</span>
+          <input type="text" class="field__input" id="songTitle" placeholder="Например, My Song" />
+        </label>
+        <label class="field"><span class="field__label">Исполнитель</span>
+          <input type="text" class="field__input" id="songArtist" placeholder="Артист" />
+        </label>
+        <label class="field"><span class="field__label">В плейлист</span>
+          <select class="field__input" id="songPlaylist"></select>
+        </label>
+
+        <div class="seg" role="tablist" aria-label="Источник">
+          <button class="seg__btn seg__btn--active" data-src="link" role="tab"><svg class="ic"><use href="#i-link"></use></svg> Ссылка</button>
+          <button class="seg__btn" data-src="file" role="tab"><svg class="ic"><use href="#i-upload"></use></svg> Файл</button>
+        </div>
+
+        <label class="field" id="songLinkField"><span class="field__label">URL аудио (mp3/ogg/wav)</span>
+          <input type="url" class="field__input" id="songLink" placeholder="https://…/track.mp3" />
+        </label>
+        <label class="field" id="songFileField" hidden><span class="field__label">Аудиофайл с устройства</span>
+          <input type="file" class="field__input" id="songFile" accept="audio/*" />
+        </label>
+
+        <div class="window__actions">
+          <button class="ghost-btn" data-close="songOverlay">Отмена</button>
+          <button class="primary-btn" id="songSaveBtn"><svg class="ic"><use href="#i-check"></use></svg> Добавить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       МОДАЛКА СОЗДАНИЯ ПЛЕЙЛИСТА
+  ========================================================== -->
+  <div class="overlay" id="playlistOverlay" hidden>
+    <div class="window window--sm" id="playlistWindow" role="dialog" aria-modal="true" aria-label="Новый плейлист">
+      <header class="window__header" data-drag-handle>
+        <div class="window__title"><svg class="ic"><use href="#i-plus"></use></svg> Новый плейлист</div>
+        <button class="icon-btn icon-btn--sm" data-close="playlistOverlay" title="Закрыть"><svg class="ic"><use href="#i-x"></use></svg></button>
+      </header>
+      <div class="window__body">
+        <label class="field"><span class="field__label">Название</span>
+          <input type="text" class="field__input" id="playlistName" placeholder="Например, Road Trip" />
+        </label>
+        <label class="field"><span class="field__label">Иконка</span>
+          <div class="emoji-picker" id="playlistIconPicker">
+            <button class="emoji-picker__btn emoji-picker__btn--active" data-icon="🎵">🎵</button>
+            <button class="emoji-picker__btn" data-icon="☕">☕</button>
+            <button class="emoji-picker__btn" data-icon="🍸">🍸</button>
+            <button class="emoji-picker__btn" data-icon="🎧">🎧</button>
+            <button class="emoji-picker__btn" data-icon="🔥">🔥</button>
+            <button class="emoji-picker__btn" data-icon="🌙">🌙</button>
+            <button class="emoji-picker__btn" data-icon="🚗">🚗</button>
+            <button class="emoji-picker__btn" data-icon="💜">💜</button>
+          </div>
+        </label>
+        <div class="window__actions">
+          <button class="ghost-btn" data-close="playlistOverlay">Отмена</button>
+          <button class="primary-btn" id="playlistSaveBtn"><svg class="ic"><use href="#i-check"></use></svg> Создать</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Тост -->
   <div class="toast" id="toast" hidden></div>
 
-  <script src="script.js"></script>
+  <!-- Скрипты (классические, работают через file://) -->
+  <script src="js/data.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/chat.js"></script>
+  <script src="js/pets.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/call.js"></script>
+  <script src="js/profile.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
